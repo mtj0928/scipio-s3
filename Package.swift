@@ -12,6 +12,7 @@ let package = Package(
         .package(url: "https://github.com/giginet/scipio-s3-storage", from: "1.0.0"),
         .package(url: "https://github.com/giginet/scipio-cache-storage.git", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
+        .package(url: "https://github.com/freddi-kit/ArtifactBundleGen.git", from: "0.0.7")
     ],
     targets: [
         .executableTarget(
