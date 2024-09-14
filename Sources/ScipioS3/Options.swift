@@ -65,16 +65,16 @@ struct ScipioBuildOptionGroup: ParsableArguments {
     var verbose: Bool = false
 }
 
-extension FrameworkType: @retroactive ExpressibleByArgument { }
+extension FrameworkType: ArgumentParser.ExpressibleByArgument { }
 
-extension BuildConfiguration: @retroactive ExpressibleByArgument {
+extension BuildConfiguration: ArgumentParser.ExpressibleByArgument {
     public init?(argument: String) {
         let string = argument.lowercased()
         self.init(rawValue: string)
     }
 }
 
-extension URL: @retroactive ExpressibleByArgument {
+extension URL: ArgumentParser.ExpressibleByArgument {
     public init?(argument: String) {
         self.init(fileURLWithPath: argument)
     }
