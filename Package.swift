@@ -1,4 +1,4 @@
-// swift-tools-version: 5.10
+// swift-tools-version: 6.0
 import PackageDescription
 
 let package = Package(
@@ -8,7 +8,7 @@ let package = Package(
         .executable(name: "scipio-s3", targets: ["ScipioS3"])
     ],
     dependencies: [
-        .package(url: "https://github.com/giginet/Scipio", revision: "0.21.0"),
+        .package(url: "https://github.com/giginet/Scipio", revision: "0.23.0"),
         .package(url: "https://github.com/giginet/scipio-s3-storage", from: "1.0.0"),
         .package(url: "https://github.com/giginet/scipio-cache-storage.git", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),

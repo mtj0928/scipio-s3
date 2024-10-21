@@ -1,5 +1,5 @@
 {
-  "originHash" : "86ee02c3eb308739433115bdc57b246dbd4dd99f41b84121fbaf57768c749b4a",
+  "originHash" : "c513e4724981342dd26472a70dcf94f47edc317d42ea41821f76a6e5b2f47768",
   "pins" : [
     {
       "identity" : "artifactbundlegen",
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/giginet/Scipio",
       "state" : {
-        "branch" : "0.21.0",
-        "revision" : "c0442481751334d99999a3db2084d95b56142bdd"
+        "branch" : "0.23.0",
+        "revision" : "d9729098a770ba0af3efd9b9677218b14305e444"
       }
     },
     {
