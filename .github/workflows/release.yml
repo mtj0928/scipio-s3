@@ -4,13 +4,13 @@ on:
 
 name: Upload Artifact Bundle to Release
 env: 
-  DEVELOPER_DIR: "/Applications/Xcode_15.4.app/Contents/Developer"
+  DEVELOPER_DIR: "/Applications/Applications/Xcode_16.app/Contents/Developer"
   SCIPIO_DEVELOPMENT: 1
 
 jobs:
   release:
     name: Build and Upload Artifact Bundle
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v3
       - name: Resolve Dependencies
