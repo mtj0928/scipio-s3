@@ -27,12 +27,7 @@ struct ScipioS3: AsyncParsableCommand {
         let logLevel: Logger.Level = options.verbose ? .trace : .info
         LoggingSystem.bootstrap(logLevel: logLevel)
 
-        let compositeStorage = try CompositeCacheStorage(storages: [
-            LocalCacheStorage(),
-            s3Storage()
-        ])
-
-        let runner = try makeRunner(storage: compositeStorage)
+        let runner = try makeRunner(storage: s3Storage())
 
         try await runner.run(
             packageDirectory: packageDirectory,
@@ -59,12 +54,13 @@ extension ScipioS3 {
             throw S3StorageError.noAWSSecretAccessKey
         }
 
-        let config = S3StorageConfig(
-            authenticationMode: .authorized(accessKeyID: awsAccessKeyID, secretAccessKey: awsSecretAccessKey),
+        let config = S3StorageConfig.authorized(AuthorizedConfiguration(
             bucket: bucketName,
             region: region,
-            endpoint: endpoint
-        )
+            endpoint: .custom(endpoint),
+            accessKeyID: awsAccessKeyID,
+            secretAccessKey: awsSecretAccessKey
+        ))
         return try S3Storage(config: config)
     }
 
@@ -92,7 +88,7 @@ extension ScipioS3 {
                 enableLibraryEvolution: options.shouldEnableLibraryEvolution
             ),
             buildOptionsMatrix: [:],
-            cacheMode: .storage(storage, [.consumer, .producer]),
+            cachePolicies: [.init(storage: storage, actors: [.consumer, .producer])],
             overwrite: true,
             verbose: options.verbose
         )
